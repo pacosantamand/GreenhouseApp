@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_lecturas"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/item_lecturas" />
+        <item
+            android:id="@+id/nav_tareas"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/item_tareas" />
+        <item
+            android:id="@+id/nav_mi_cuenta"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/item_mi_cuenta" />
+    </group>
+
+
+</menu>

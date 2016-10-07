@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ProyectoTesis</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_update">Actualizar</string>
+
+
+    <string name="item_lecturas">Lecturas</string>
+    <string name="item_tareas">Tareas</string>
+    <string name="item_mi_cuenta">Mi Cuenta</string>
+
+    <string name="title_tareas">Tareas</string>
+
+
+    <string name="title_ultimas">Valores</string>
+
+    <string name="btn_dia">Día</string>
+    <string name="btn_semana">Semana</string>
+    <string name="btn_mes">Mes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
