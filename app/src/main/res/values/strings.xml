@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoTesis</string>
+    <string name="app_name">My Greenhouse</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -15,6 +15,9 @@
     <string name="title_tareas">Tareas</string>
 
 
+    <string name="lb_ultima">Última lectura</string>
+    <string name="lb_maxima">Máxima</string>
+    <string name="lb_minima">Mínima</string>
     <string name="title_ultimas">Valores</string>
 
     <string name="btn_dia">Día</string>

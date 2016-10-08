@@ -71,7 +71,8 @@ public class FragmentLecturas extends Fragment {
         AdaptadorSecciones adapter = new AdaptadorSecciones(getFragmentManager());
         String[] titles = getTitleVariables();
         for(int i=0;i<titles.length;i++){
-            adapter.addFragment(LecturaFragment.newInstance(i,titles[i]),titles[i]);
+           // adapter.addFragment(LecturaFragment.newInstance(i,titles[i]),titles[i]);
+            adapter.addFragment(VariableFragment.newInstance(i,titles[i]),titles[i]);
         }
         viewPager.setAdapter(adapter);
     }
