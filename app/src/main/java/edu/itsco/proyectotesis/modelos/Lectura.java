@@ -9,19 +9,12 @@ public class Lectura {
 
     private double valorLectura;
     private Date fechaLectura;
-    private Variable variableLectura;
 
 
-    public Lectura(double valorLectura,Date fechaLectura, String nombreVariable){
-        this(valorLectura,fechaLectura,new Variable(nombreVariable));
-    }
-
-    public Lectura(double valorLectura, Date fechaLectura, Variable variableLectura) {
+    public Lectura(double valorLectura, Date fechaLectura) {
         this.setValorLectura(valorLectura);
         this.setFechaLectura(fechaLectura);
-        this.setVariableLectura(variableLectura);
     }
-
 
     public double getValorLectura() {
         return valorLectura;
@@ -39,11 +32,4 @@ public class Lectura {
         this.fechaLectura = fechaLectura;
     }
 
-    public Variable getVariableLectura() {
-        return variableLectura;
-    }
-
-    public void setVariableLectura(Variable variableLectura) {
-        this.variableLectura = variableLectura;
-    }
 }

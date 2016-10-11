@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.itsco.proyectotesis.VariableFragment">
+    tools:context="edu.itsco.proyectotesis.VariableFragment"
+    android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -74,9 +75,11 @@
             tools:text="34 ºC"
             android:textSize="18sp" />
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
+    <view
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_graficas" />
+        class="com.github.mikephil.charting.charts.LineChart"
+        android:id="@+id/chart_hora"
+        android:layout_height="100dp"
+        android:layout_weight="0.17" />
+
 </LinearLayout>
