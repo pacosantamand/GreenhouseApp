@@ -2,8 +2,10 @@ package edu.itsco.proyectotesis.adapters;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -36,12 +38,15 @@ public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.grafica_item, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        holder.lbTipo.setText(graficaDatas.get(position).getTipo());
+        holder.mChart.setData(graficaDatas.get(position).getData());
     }
 
     @Override
@@ -51,14 +56,16 @@ public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public static LineChart mChart;
-        private View rootView;
+        public LineChart mChart;
+        public TextView lbTipo;
         public ViewHolder(View v){
             super(v);
             mChart = (LineChart) v.findViewById(R.id.chart);
+            lbTipo = (TextView) v.findViewById(R.id.lb_tipo);
+            configurarGrafica(v);
         }
 
-        private void configurarGrafica() {
+        private void configurarGrafica(View v) {
             mChart.setDescription("");
             mChart.setNoDataTextDescription("Todavía no hay datos");
             mChart.setTouchEnabled(true);
@@ -87,7 +94,7 @@ public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHold
             left.setLabelCount(5, true);
 
             //Configurando el Popup
-            ChartPopup myPopup = new ChartPopup(rootView.getContext(), R.layout.popup_layout, "°C");
+            ChartPopup myPopup = new ChartPopup(v.getContext(), R.layout.popup_layout, "");
             mChart.setMarkerView(myPopup);
 
         }

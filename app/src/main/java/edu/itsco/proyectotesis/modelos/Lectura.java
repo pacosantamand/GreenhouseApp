@@ -7,20 +7,20 @@ import java.util.Date;
  */
 public class Lectura {
 
-    private double valorLectura;
+    private float valorLectura;
     private Date fechaLectura;
 
 
-    public Lectura(double valorLectura, Date fechaLectura) {
+    public Lectura(float valorLectura, Date fechaLectura) {
         this.setValorLectura(valorLectura);
         this.setFechaLectura(fechaLectura);
     }
 
-    public double getValorLectura() {
+    public float getValorLectura() {
         return valorLectura;
     }
 
-    public void setValorLectura(double valorLectura) {
+    public void setValorLectura(float valorLectura) {
         this.valorLectura = valorLectura;
     }
 

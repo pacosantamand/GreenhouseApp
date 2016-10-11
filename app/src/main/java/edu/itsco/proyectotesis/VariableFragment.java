@@ -4,6 +4,8 @@ package edu.itsco.proyectotesis;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +21,13 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import edu.itsco.proyectotesis.adapters.GraficaAdapter;
+import edu.itsco.proyectotesis.modelos.Lectura;
 import edu.itsco.proyectotesis.utils.ChartPopup;
 import edu.itsco.proyectotesis.utils.EjeXValueFormatter;
+import edu.itsco.proyectotesis.utils.GraficaData;
 
 
 /**
@@ -43,6 +49,10 @@ public class VariableFragment extends Fragment {
     private TextView lbMaxima;
     private TextView lbMinima;
     private TextView lbUltima;
+
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLayoutManager;
+    private GraficaAdapter mAdapter;
 
 
     public VariableFragment() {
@@ -88,92 +98,36 @@ public class VariableFragment extends Fragment {
         lbMaxima.setText("44 ºC");
         lbMinima.setText("32 ºC");
         lbUltima.setText("38 ºC");
-        mChart = (LineChart) rootView.findViewById(R.id.chart_hora);
-        configurarGrafica();
+
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler);
+
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        ArrayList<GraficaData> mDataSet = new ArrayList<>();
+        mDataSet.add(new GraficaData("Hora",getDummyData(5,40)));
+        mDataSet.add(new GraficaData("Semana",getDummyData(7,43)));
+        mDataSet.add(new GraficaData("Mensual",getDummyData(15,45)));
+
+
+        // specify an adapter (see also next example)
+        mAdapter = new GraficaAdapter(mDataSet);
+        mRecyclerView.setAdapter(mAdapter);
         return rootView;
     }
 
-    public void configurarGrafica(){
-        mChart.setDescription("");
-        mChart.setNoDataTextDescription("Todavía no hay lecturas");
-        mChart.setTouchEnabled(true);
-        mChart.setDragEnabled(true);
-        mChart.setScaleXEnabled(true);
-        mChart.setScaleYEnabled(false);
-
-        //Configurando el ejeX
-        XAxis xAxis = mChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextSize(14f);
-        xAxis.setTextColor(Color.BLACK);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1f);
-        xAxis.setValueFormatter(new EjeXValueFormatter(EjeXValueFormatter.FORMATO_DIA));
-        //deshabilitando el ejeY derecho
-        mChart.getAxisRight().setEnabled(false);
-        //Configurando el ejeY
-        YAxis left = mChart.getAxisLeft();
-        left.setDrawLabels(true); // no axis labels
-        left.setDrawAxisLine(false); // no axis line
-        left.setDrawGridLines(false); // no grid lines
-        left.setTextColor(Color.BLACK);
-        left.setTextSize(12f);
-        left.setLabelCount(3, true);
-
-        //Configurando el Popup
-        ChartPopup myPopup = new ChartPopup(getActivity(),R.layout.popup_layout," °C");
-        mChart.setMarkerView(myPopup);
-
-        //Generando datos y su formato
-        setData(5,40);
-    }
-
-    public void setData(int count, int range){
-        ArrayList<Entry> values = new ArrayList<Entry>();
-
+    private ArrayList<Lectura> getDummyData(int count, float range){
+        ArrayList<Lectura> dummyData = new ArrayList<>();
         for (int i = 0; i < count; i++) {
 
             float val = (float) (Math.random() * range) + 3;
-            values.add(new Entry(i, val));
+            dummyData.add(new Lectura(val, new Date()));
         }
-
-        LineDataSet set1;
-
-        if (mChart.getData() != null &&
-                mChart.getData().getDataSetCount() > 0) {
-            set1 = (LineDataSet)mChart.getData().getDataSetByIndex(0);
-            set1.setValues(values);
-            mChart.getData().notifyDataChanged();
-            mChart.notifyDataSetChanged();
-        } else {
-            // create a dataset and give it a type
-            set1 = new LineDataSet(values, "title");
-
-            set1.setColor(Color.parseColor("#ff6d00"));
-            set1.setCircleColor(Color.parseColor("#ff6d00"));
-            set1.setLineWidth(3f);
-            set1.setCircleRadius(5f);
-            set1.setDrawCircleHole(true);
-            set1.setDrawValues(false);
-            set1.setValueTextSize(12f);
-            set1.setDrawFilled(true);
-            set1.setFillColor(Color.parseColor("#ffe0b2"));
-            set1.setDrawHighlightIndicators(false);
-
-            ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-            dataSets.add(set1); // add the datasets
-
-            // create a data object with the datasets
-            LineData data = new LineData(dataSets);
-
-            // set data
-            mChart.setData(data);
-
-        }
-
-        mChart.invalidate();
-        mChart.animateX(250, Easing.EasingOption.Linear);
+        return dummyData;
     }
+
 
 }
