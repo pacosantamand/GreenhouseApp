@@ -2,8 +2,8 @@
 <resources>
     <color name="window_background">#ffffff</color>
 
-    <color name="colorPrimaryDark">#388e3c</color>
-    <color name="colorPrimary">#4caf50</color>
+    <color name="colorPrimary">#8bc34a</color>
+    <color name="colorPrimaryDark">#558b2f</color>
     <color name="colorAccent">#ff6d00</color>
 
     <color name="background_footer_item_grid_categorias">#90000000</color>

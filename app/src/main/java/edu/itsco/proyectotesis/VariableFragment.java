@@ -28,6 +28,7 @@ import edu.itsco.proyectotesis.modelos.Lectura;
 import edu.itsco.proyectotesis.utils.ChartPopup;
 import edu.itsco.proyectotesis.utils.EjeXValueFormatter;
 import edu.itsco.proyectotesis.utils.GraficaData;
+import edu.itsco.proyectotesis.utils.TipoGrafica;
 
 
 /**
@@ -108,9 +109,9 @@ public class VariableFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         ArrayList<GraficaData> mDataSet = new ArrayList<>();
-        mDataSet.add(new GraficaData("Hora",getDummyData(5,40)));
-        mDataSet.add(new GraficaData("Semana",getDummyData(7,43)));
-        mDataSet.add(new GraficaData("Mensual",getDummyData(15,45)));
+        mDataSet.add(new GraficaData(TipoGrafica.HORA,getDummyData(5,40)));
+        mDataSet.add(new GraficaData(TipoGrafica.SEMANA,getDummyData(7,43)));
+        mDataSet.add(new GraficaData(TipoGrafica.MES,getDummyData(15,45)));
 
 
         // specify an adapter (see also next example)
@@ -122,8 +123,7 @@ public class VariableFragment extends Fragment {
     private ArrayList<Lectura> getDummyData(int count, float range){
         ArrayList<Lectura> dummyData = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-
-            float val = (float) (Math.random() * range) + 3;
+            float val = (float) (Math.random() * range) + 20;
             dummyData.add(new Lectura(val, new Date()));
         }
         return dummyData;

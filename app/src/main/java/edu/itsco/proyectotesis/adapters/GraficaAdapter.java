@@ -7,21 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-
 import java.util.ArrayList;
 
 import edu.itsco.proyectotesis.R;
 import edu.itsco.proyectotesis.utils.ChartPopup;
 import edu.itsco.proyectotesis.utils.EjeXValueFormatter;
 import edu.itsco.proyectotesis.utils.GraficaData;
+import edu.itsco.proyectotesis.utils.TipoGrafica;
+
 
 /**
  * Created by Paco on 07/10/16.
@@ -31,7 +27,6 @@ public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHold
 
 
     private ArrayList<GraficaData> graficaDatas;
-    private String tipoGrafica;
     public GraficaAdapter(ArrayList<GraficaData> graficaDatas){
         this.graficaDatas = graficaDatas;
     }
@@ -45,8 +40,19 @@ public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.lbTipo.setText(graficaDatas.get(position).getTipo());
+        TipoGrafica tipo = graficaDatas.get(position).getTipo();
+        switch (tipo) {
+            case HORA:  holder.lbTipo.setText("Hora");
+                break;
+            case SEMANA:  holder.lbTipo.setText("Semana");
+                break;
+            case MES:  holder.lbTipo.setText("Mes");
+                break;
+        }
+        holder.mChart.getXAxis().setValueFormatter(
+                new EjeXValueFormatter(tipo));
         holder.mChart.setData(graficaDatas.get(position).getData());
+
     }
 
     @Override
@@ -81,7 +87,7 @@ public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHold
             xAxis.setDrawAxisLine(false);
             xAxis.setDrawGridLines(false);
             xAxis.setGranularity(1f);
-            xAxis.setValueFormatter(new EjeXValueFormatter(EjeXValueFormatter.FORMATO_DIA));
+            //xAxis.setValueFormatter(new EjeXValueFormatter(Tipo));
             //deshabilitando el ejeY derecho
             mChart.getAxisRight().setEnabled(false);
             //Configurando el ejeY

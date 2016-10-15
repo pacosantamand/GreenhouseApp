@@ -20,10 +20,10 @@ import edu.itsco.proyectotesis.modelos.Lectura;
 public class GraficaData {
 
     private ArrayList<Lectura> lecturas;
-    private String tipo;
+    private TipoGrafica tipo;
 
 
-    public GraficaData(String tipo, ArrayList<Lectura> lecturas){
+    public GraficaData(TipoGrafica tipo, ArrayList<Lectura> lecturas){
         this.tipo = tipo;
         this.lecturas = lecturas;
     }
@@ -36,7 +36,7 @@ public class GraficaData {
         return valores;
     }
 
-    public String getTipo(){
+    public TipoGrafica getTipo(){
         return this.tipo;
     }
 

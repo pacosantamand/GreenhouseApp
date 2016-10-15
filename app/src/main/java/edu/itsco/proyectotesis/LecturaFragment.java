@@ -108,7 +108,7 @@ public class LecturaFragment extends Fragment implements View.OnClickListener{
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
-        xAxis.setValueFormatter(new EjeXValueFormatter(EjeXValueFormatter.FORMATO_DIA));
+  //      xAxis.setValueFormatter(new EjeXValueFormatter(EjeXValueFormatter.FORMATO_DIA));
         //deshabilitando el ejeY derecho
         mChart.getAxisRight().setEnabled(false);
         //Configurando el ejeY
@@ -182,21 +182,21 @@ public class LecturaFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         resetZoom();
-        if(v.getId()==btnDia.getId()){
-            mChart.getXAxis().setValueFormatter(
-                    new EjeXValueFormatter(EjeXValueFormatter.FORMATO_DIA));
-            setData(15,45f);
-        }else if(v.getId()==btnSemana.getId()){
-
-            mChart.getXAxis().setValueFormatter(
-                    new EjeXValueFormatter(EjeXValueFormatter.FORMATO_SEMANA));
-            setData(7,40f);
-        }else if(v.getId()==btnMes.getId()){
-
-            mChart.getXAxis().setValueFormatter(
-                    new EjeXValueFormatter(EjeXValueFormatter.FORMATO_MES));
-            setData(22,45f);
-        }
+//        if(v.getId()==btnDia.getId()){
+//            mChart.getXAxis().setValueFormatter(
+//                    new EjeXValueFormatter(EjeXValueFormatter.FORMATO_DIA));
+//            setData(15,45f);
+//        }else if(v.getId()==btnSemana.getId()){
+//
+//            mChart.getXAxis().setValueFormatter(
+//                    new EjeXValueFormatter(EjeXValueFormatter.FORMATO_SEMANA));
+//            setData(7,40f);
+//        }else if(v.getId()==btnMes.getId()){
+//
+//            mChart.getXAxis().setValueFormatter(
+//                    new EjeXValueFormatter(EjeXValueFormatter.FORMATO_MES));
+//            setData(22,45f);
+//        }
 
        // mChart.notifyDataSetChanged();
 
