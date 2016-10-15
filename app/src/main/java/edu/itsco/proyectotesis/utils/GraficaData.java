@@ -66,7 +66,7 @@ public class GraficaData {
         set1.setFillColor(Color.parseColor("#ffe0b2"));
         set1.setDrawHighlightIndicators(false);
 
-        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1); // add the datasets
 
         // create a data object with the datasets
