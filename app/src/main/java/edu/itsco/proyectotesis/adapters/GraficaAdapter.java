@@ -19,10 +19,6 @@ import edu.itsco.proyectotesis.utils.GraficaData;
 import edu.itsco.proyectotesis.utils.TipoGrafica;
 
 
-/**
- * Created by Paco on 07/10/16.
- */
-
 public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHolder> {
 
 
@@ -60,11 +56,11 @@ public class GraficaAdapter extends RecyclerView.Adapter<GraficaAdapter.ViewHold
         return graficaDatas.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public LineChart mChart;
-        public TextView lbTipo;
-        public ViewHolder(View v){
+        LineChart mChart;
+        TextView lbTipo;
+        ViewHolder(View v){
             super(v);
             mChart = (LineChart) v.findViewById(R.id.chart);
             lbTipo = (TextView) v.findViewById(R.id.lb_tipo);
