@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -31,6 +33,9 @@ public class TareaAdapter extends RecyclerView.Adapter<TareaAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(TareaAdapter.ViewHolder holder, int position) {
+        holder.lbTarea.setText(tareaList.get(position).getNombre());
+        holder.lbRealizada.setText(
+                tareaList.get(position).isRealizada() ? "Realizada":"En espera");
     }
 
     @Override
@@ -39,8 +44,16 @@ public class TareaAdapter extends RecyclerView.Adapter<TareaAdapter.ViewHolder> 
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
+
+        TextView lbTarea;
+        TextView lbRealizada;
+        ImageView imgTarea;
+
         public ViewHolder(View v){
             super(v);
+            lbTarea = (TextView) v.findViewById(R.id.lb_tarea_titulo);
+            lbRealizada = (TextView) v.findViewById(R.id.lb_realizada);
+            imgTarea = (ImageView) v.findViewById(R.id.img_tarea);
         }
     }
 }
